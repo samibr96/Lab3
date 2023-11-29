@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 
 public class CarController {
+
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
@@ -31,9 +32,9 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240(Direction.EAST, 10, 0));
-        cc.cars.add(new Saab95(Direction.EAST, 10, 0));
-        cc.cars.add(new Scania(Direction.EAST, 10, 0));
+        cc.cars.add(new Volvo240(Direction.EAST, 0, 0));
+        cc.cars.add(new Saab95(Direction.EAST, 0, 0));
+        cc.cars.add(new Scania(Direction.EAST, 0, 0));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -48,14 +49,16 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle car : cars) { // for (ACar car : cars)
-                car.move();
-                int x = (int) Math.round(car.getX());
-                int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(x, y);
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
+
+                    car.move();
+                    int x = (int) Math.round(car.getX());
+                    int y = (int) Math.round(car.getY());
+
+                    frame.drawPanel.moveit(x, y);
+                    // repaint() calls the paintComponent method of the panel
+                    frame.drawPanel.repaint();
+                }
             }
-        }
     }
 
     // Calls the gas method for each car once
@@ -76,13 +79,34 @@ public class CarController {
     }
 
     void turboOn() {
-
-            for (Vehicle car : cars){
-                if (car.getModelName().equals("Saab95")){
-                    ((Saab95) car).setTurboOn();
-                }
+        for (Vehicle car : cars) {
+            if (car.getModelName().equals("Saab95")) {
+                ((Saab95) car).setTurboOn();
             }
         }
+    }
 
+    void turboOff() {
+        for (Vehicle car : cars) {
+            if (car.getModelName().equals("Saab95")) {
+                ((Saab95) car).setTurboOff();
+            }
+        }
+    }
 
+    void liftBed() {
+        for (Vehicle car : cars) {
+            if (car.getModelName().equals("Scania")) {
+                ((Scania) car).raisePlatform(45);
+            }
+        }
+    }
+
+    void lowerBed() {
+        for (Vehicle car : cars) {
+            if (car.getModelName().equals("Scania")) {
+                ((Scania) car).lowerPlatform(0);
+            }
+        }
+    }
 }

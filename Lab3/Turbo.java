@@ -6,7 +6,6 @@ public class Turbo {
         return turboOn;
     }
     public void setTurboOn() {
-
         turboOn = true;
     }
     public void setTurboOff() {

@@ -135,14 +135,38 @@ public abstract class Vehicle implements Movable {
 
 
     public void move() {
-        if (direction  == Direction.NORTH) {
-            setY(getY() - getCurrentSpeed());}
-        else if (direction  == Direction.EAST) {
-            setX(getX() + getCurrentSpeed());}
-        else if (direction  == Direction.WEST) {
-            setX(getX() - getCurrentSpeed());}
-        else if (direction  == Direction.SOUTH) {
-            setY(getY() + getCurrentSpeed());}
+        double previousX = getX();
+        double previousY = getY();
+
+        if (direction == Direction.NORTH) {
+            setY(getY() - getCurrentSpeed());
+        } else if (direction == Direction.EAST) {
+            setX(getX() + getCurrentSpeed());
+        } else if (direction == Direction.WEST) {
+            setX(getX() - getCurrentSpeed());
+        } else if (direction == Direction.SOUTH) {
+            setY(getY() + getCurrentSpeed());
+        }
+
+        // Check for collisions with walls
+        if (getX() < 0 || getX() > 700 || getY() < 0 || getY() > 700) {
+            // Collision with wall, invert direction
+            setX(previousX);
+            setY(previousY);
+            invertDirection();
+        }
+    }
+
+    private void invertDirection() {
+        if (direction == Direction.NORTH) {
+            direction = Direction.SOUTH;
+        } else if (direction == Direction.EAST) {
+            direction = Direction.WEST;
+        } else if (direction == Direction.WEST) {
+            direction = Direction.EAST;
+        } else if (direction == Direction.SOUTH) {
+            direction = Direction.NORTH;
+        }
     }
 
 

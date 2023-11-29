@@ -25,14 +25,11 @@ public class DrawPanel extends JPanel{
         volvoPoint.x = x;
         volvoPoint.y = y;
 
-        saabPoint.x = x+100;
+        saabPoint.x = x;
         saabPoint.y = y+100;
 
-        scaniaPoint.x = x+200;
+        scaniaPoint.x = x;
         scaniaPoint.y = y+200;
-
-
-
     }
 
     // Initializes the panel and reads the images
@@ -65,7 +62,7 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
+        g.drawImage(saabImage, saabPoint.x, saabPoint.y , null); // see javadoc for more info on the parameters
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
 
     }
