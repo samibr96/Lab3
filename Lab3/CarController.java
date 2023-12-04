@@ -21,10 +21,13 @@ public class CarController {
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
-    // A list of cars, modify if needed
-    //ArrayList<ACar> cars = new ArrayList<>();
 
     ArrayList<Vehicle> cars = new ArrayList<>();
+
+    public static Volvo240 volvo = new Volvo240(Direction.EAST, 0, 0);
+
+    public static Saab95 saab = new Saab95(Direction.EAST, 0, 100);
+    public static Scania scania = new Scania(Direction.EAST, 0, 200);
 
     //methods:
 
@@ -32,9 +35,9 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240(Direction.EAST, 0, 0));
-        cc.cars.add(new Saab95(Direction.EAST, 0, 0));
-        cc.cars.add(new Scania(Direction.EAST, 0, 0));
+        cc.cars.add(saab);
+        cc.cars.add(volvo);
+        cc.cars.add(scania);
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -105,7 +108,7 @@ public class CarController {
     void lowerBed() {
         for (Vehicle car : cars) {
             if (car.getModelName().equals("Scania")) {
-                ((Scania) car).lowerPlatform(0);
+                ((Scania) car).lowerPlatform(45);
             }
         }
     }
