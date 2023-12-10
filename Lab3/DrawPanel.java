@@ -15,22 +15,6 @@ public class DrawPanel extends JPanel{
     BufferedImage saabImage;
     BufferedImage scaniaImage;
 
-    // To keep track of a singel cars position
-    Point volvoPoint = new Point();
-    Point saabPoint = new Point();
-    Point scaniaPoint = new Point();
-
-    // TODO: Make this genereal for all cars
-    void moveit(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
-
-        saabPoint.x = x;
-        saabPoint.y = y;
-
-        scaniaPoint.x = x;
-        scaniaPoint.y = y;
-    }
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {

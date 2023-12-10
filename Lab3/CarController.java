@@ -54,11 +54,6 @@ public class CarController {
             for (Vehicle car : cars) { // for (ACar car : cars)
 
                     car.move();
-                    int x = (int) Math.round(car.getX());
-                    int y = (int) Math.round(car.getY());
-
-                    frame.drawPanel.moveit(x, y);
-                    // repaint() calls the paintComponent method of the panel
                     frame.drawPanel.repaint();
                 }
             }
